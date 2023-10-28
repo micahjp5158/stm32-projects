@@ -25,5 +25,8 @@ main.bin: main.elf
 size: main.elf
 	$(SIZE) $< 
 
+flash:
+	sudo openocd -f board/stm32f4discovery.cfg -c "program main.elf verify reset exit"
+
 clean:
-	del *.o *.d *.elf *.bin *.map
+	rm *.o *.d *.elf *.bin *.map

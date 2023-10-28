@@ -25,31 +25,31 @@ SECTIONS
         *(.rodata)
         *(.rodata.*)
         . = ALIGN(4);
-        _etext = .;     // End of text section symbol
-    }> FLASH            // Map text section to flash memory               
+        _etext = .;     /* End of text section symbol */
+    }> FLASH            /* Map text section to flash memory */          
 
     _la_data = LOADADDR(.data);
 
     /* Data section */
     .data :
     {
-        _sdata = .;     // Start of data section symbol
+        _sdata = .;     /* Start of data section symbol */
         *(.data)
         *(.data.*)
         . = ALIGN(4);
-        _edata = .;     // End of data section symbol
-    }> SRAM AT> FLASH   // 
+        _edata = .;     /* End of data section symbol */
+    }> SRAM AT> FLASH    
 
     /* Data section */
     .bss :
     {
-        _sbss = .;              // Start of BSS section symbol
+        _sbss = .;              /* Start of BSS section symbol */
         __bss_start__ = _sbss;
         *(.bss)
         *(.bss.*)
         *(COMMON)
         . = ALIGN(4);
-        _ebss = .;              // End of BSS section symbol
+        _ebss = .;              /* End of BSS section symbol */
         __bss_end__ = _ebss;
         . = ALIGN(4); 
         end = .;

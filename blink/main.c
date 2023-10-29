@@ -28,10 +28,6 @@ int main(void)
     // GPIOx_MODER register definition from STM32F407VG reference manual section 8.4.1
     ACCESS(GPIOD_MODER) |= ((1 << 24) | (1 << 26) | (1 << 28) | (1 << 30));
 
-    // Set to very high speed
-    // GPIOx_OSPEEDR register definition from STM32F407VG reference manual section 8.4.3
-    ACCESS(GPIOD_OSPEEDR) |= ((3 << 24) | (3 << 26) | (3 << 28) | (3 << 30));
-
     while(1) {
         // Toggle LEDs
         // GPIOx_ODR register definition from STM32F407VG reference manual section 8.4.6

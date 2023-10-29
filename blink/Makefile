@@ -29,4 +29,4 @@ flash:
 	sudo openocd -f board/stm32f4discovery.cfg -c "program main.elf verify reset exit"
 
 clean:
-	rm *.o *.d *.elf *.bin *.map
+	rm -f *.o *.d *.elf *.bin *.map

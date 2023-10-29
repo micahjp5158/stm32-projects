@@ -234,7 +234,7 @@ void Reset_Handler(void)
 		*pDst++ = *pSrc++;
 	}
 	
-	// Init. the .bss section to zero in SRAM
+	// Initialize the .bss section to zero in SRAM
 	size = (uint32_t)&_ebss - (uint32_t)&_sbss;
 	pDst = (uint8_t*)&_sbss;
 	for(uint32_t i =0 ; i < size ; i++)
@@ -246,4 +246,9 @@ void Reset_Handler(void)
 	
     // Start user program
 	main();
+
+	while(1)
+	{
+		__asm("nop");
+	}
 }

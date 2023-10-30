@@ -5,10 +5,10 @@ ENTRY(Reset_Handler)
 MEMORY
 {
     /* Flash information from STM32F407VG Reference manual Table 5 */
-    FLASH(rx):ORIGIN =0x08000000,LENGTH =1024K
+    FLASH(rx):  ORIGIN = 0x08000000, LENGTH = 1024K
 
     /* SRAM information from STM32F407VG Reference manual section 2.3.1 */
-    SRAM(rwx):ORIGIN =0x20000000,LENGTH =128K
+    SRAM(rwx):  ORIGIN = 0x20000000, LENGTH = 128K
 }
 
 SECTIONS
@@ -25,7 +25,7 @@ SECTIONS
         *(.rodata.*)
         . = ALIGN(4);
         _etext = .;     /* End of text section symbol */
-    }> FLASH            /* Map text section to flash memory */          
+    } > FLASH        
 
     _la_data = LOADADDR(.data);
 
@@ -37,7 +37,7 @@ SECTIONS
         *(.data.*)
         . = ALIGN(4);
         _edata = .;     /* End of data section symbol */
-    }> SRAM AT> FLASH    
+    } > SRAM AT > FLASH    
 
     /* Data section */
     .bss :
@@ -53,5 +53,5 @@ SECTIONS
         . = ALIGN(4); 
         end = .;
         __end__ = .;
-    }> SRAM
+    } > SRAM
 }

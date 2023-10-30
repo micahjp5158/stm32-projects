@@ -1,32 +1,47 @@
-## Cross-compilation commands 
+# Cross-compilation commands
 CC      = arm-none-eabi-gcc
 LD      = arm-none-eabi-gcc
 AS      = arm-none-eabi-as
 OBJCOPY = arm-none-eabi-objcopy
 SIZE    = arm-none-eabi-size
 
-#OBJS  = main.o syscalls.o startup_stm32.o
-OBJS  = main.o stm32f407vg_startup.o
+# Project information
+PROJECT = blink
+ELF = $(PROJECT).elf
+BIN = $(PROJECT).bin
 
-## Platform and optimization options
-CFLAGS = -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -DSTM32 -DSTM32F4 -DSTM32F411VETx -DSTM32F411E_DISCO 
-CFLAGS += -DDEBUG -DSTM32F411xE -DUSE_STDPERIPH_DRIVER -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP
-LFLAGS = -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T"stm32f407vg_linker.ld" -Wl,-Map=output.map -Wl,--gc-sections
+# Target information
+CPU = cortex-m4
+BOARD = board/stm32f4discovery.cfg
+
+# Debugger information
+DEBUGGER = openocd
+FLASH_TARGET = $(DEBUGGER) -f $(BOARD)
+FLASH_CMD = "program $(ELF) verify reset exit"
+FLASH = $(FLASH_TARGET) -c $(FLASH_CMD)
+
+# Source files
+SRC = stm32f407vg_startup.c main.c
+
+# Linker
+LD = stm32f407vg_linker.ld
+
+# Compilation flags
+CFLAGS  = -Wall -O0
+CFLAGS += -mcpu=$(CPU) -mthumb -mfloat-abi=soft --specs=nano.specs -nostdlib
+CFLAGS += -T $(LD)
 
 ## Rules
-all: main.elf main.bin size 
+default: $(BIN)
 
-main.elf: $(OBJS) stm32f407vg_linker.ld
-	$(LD) $(LFLAGS) -o main.elf $(OBJS)
+$(BIN) : $(ELF)
+	$(OBJCOPY) -O binary $^ $@
 
-main.bin: main.elf
-	$(OBJCOPY) -O binary "main.elf" "main.bin"
-
-size: main.elf
-	$(SIZE) $< 
+$(ELF): $(SRC)
+	$(CC) $(CFLAGS) $^ -o $@
 
 flash:
-	sudo openocd -f board/stm32f4discovery.cfg -c "program main.elf verify reset exit"
+	sudo $(FLASH)
 
 clean:
 	rm -f *.o *.d *.elf *.bin *.map

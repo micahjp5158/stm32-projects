@@ -1,3 +1,10 @@
+/*
+ * stm32f407vg_startup.c
+ *
+ * Startup file for the STM32F407VG MCU. Initializes the vector table,
+ * implements the reset vector, and calls the main user program.
+ */
+
 #include <stdint.h>
 
 /* SRAM information from STM32F407VG Reference manual section 2.3.1 */
@@ -112,7 +119,7 @@ void HASH_RNG_IRQHandler         	(void) __attribute__ ((weak, alias("Default_Ha
 void FPU_IRQHandler              	(void) __attribute__ ((weak, alias("Default_Handler")));                          
 
 
-uint32_t vectors[] __attribute__((section(".isr_vector")))   = {
+uint32_t vectors[] __attribute__((section(".vector_table")))   = {
 	STACK_START,
 	(uint32_t)Reset_Handler,
 	(uint32_t)NMI_Handler,

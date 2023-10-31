@@ -1,3 +1,10 @@
+/*
+ * stm32f407vg_linker.c
+ *
+ * Linker file for the STM32F407VG MCU. Defines the memory sections and
+ * maps the memory sections.
+ */
+
 /* Entry point */
 ENTRY(Reset_Handler)
 
@@ -11,12 +18,13 @@ MEMORY
     SRAM(rwx):  ORIGIN = 0x20000000, LENGTH = 128K
 }
 
+/* Memory sections */
 SECTIONS
 {
     /* Text section */
     .text :
     {
-        *(.isr_vector)
+        *(.vector_table)
         *(.text)
         *(.text.*)
         *(.init)
@@ -39,7 +47,7 @@ SECTIONS
         _edata = .;     /* End of data section symbol */
     } > SRAM AT > FLASH    
 
-    /* Data section */
+    /* BSS section */
     .bss :
     {
         _sbss = .;              /* Start of BSS section symbol */

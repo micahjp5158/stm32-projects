@@ -27,7 +27,7 @@ SRC = stm32f407vg_startup.c main.c
 LD = stm32f407vg_linker.ld
 
 # Compilation flags
-CFLAGS  = -Wall -O0
+CFLAGS  = -Wall -O0 -g
 CFLAGS += -mcpu=$(CPU) -mthumb -mfloat-abi=soft --specs=nano.specs -nostdlib
 CFLAGS += -T $(LD)
 

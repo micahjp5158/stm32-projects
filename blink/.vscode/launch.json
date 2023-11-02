@@ -11,7 +11,8 @@
             
             "cwd": "${workspaceRoot}",
             "executable": "./blink.elf",
-            "name": "Debug with OpenOCD",
+            "svdFile": "../stm32f407vg.svd",
+            "name": "Blink Debug",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",

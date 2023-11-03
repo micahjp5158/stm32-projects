@@ -9,7 +9,7 @@ SIZE    = arm-none-eabi-size
 COMMON_DIR = ../common
 
 # Project information
-PROJECT = blink
+PROJECT = hello-world
 ELF = $(PROJECT).elf
 BIN = $(PROJECT).bin
 
@@ -27,14 +27,15 @@ FLASH = $(FLASH_TARGET) -c $(FLASH_CMD)
 LD = $(COMMON_DIR)/stm32f407vg_linker.ld
 
 # Common source files
-SRC = $(COMMON_DIR)/stm32f407vg_startup.c
+SRC  = $(COMMON_DIR)/stm32f407vg_startup.c
 
 # Project source files
 SRC += main.c
 
 # Compilation flags
 CFLAGS  = -Wall -O0 -g
-CFLAGS += -mcpu=$(CPU) -mthumb -mfloat-abi=soft --specs=nano.specs -nostdlib
+CFLAGS += -mcpu=$(CPU) -mthumb -mfloat-abi=soft
+CFLAGS += --specs=rdimon.specs -lrdimon -lc
 CFLAGS += -T $(LD)
 
 ## Rules

@@ -5,23 +5,26 @@
     "version": "0.2.0",
     "configurations": [
         {
-            // Update these paths to your own install locations!
-            "armToolchainPath": "/usr/local/gcc-arm-none-eabi/bin",
-            "gdbPath": "/usr/local/gcc-arm-none-eabi/bin/arm-none-eabi-gdb",
-            
-            "cwd": "${workspaceRoot}",
-            "executable": "./blink.elf",
-            "svdFile": "../stm32f407vg.svd",
+            // General
             "name": "Blink Debug",
             "request": "launch",
-            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "./blink.elf",
+            "runToEntryPoint": "main",
+
+            // Software configs
             "servertype": "openocd",
+            "type": "cortex-debug",
+
+            // Hardware configs
+            "svdFile": "../stm32f407vg.svd",
             "configFiles": [
                 "board/stm32f4discovery.cfg"
             ],
-            "searchDir": [],
-            "runToEntryPoint": "main",
-            "showDevDebugOutput": "raw"
-        },
+
+            // Executable paths - Update these paths to your own install locations!
+            "armToolchainPath": "/usr/local/gcc-arm-none-eabi/bin",
+            "gdbPath": "/usr/local/gcc-arm-none-eabi/bin/arm-none-eabi-gdb"
+        }
     ]
 }

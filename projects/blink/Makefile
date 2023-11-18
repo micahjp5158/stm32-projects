@@ -6,7 +6,7 @@ OBJCOPY = arm-none-eabi-objcopy
 SIZE    = arm-none-eabi-size
 
 # Directories
-COMMON_DIR = ../common
+HARDWARE_FILES_DIR= ../../hardware-files
 
 # Project information
 PROJECT = blink
@@ -24,10 +24,10 @@ FLASH_CMD = "program $(ELF) verify reset exit"
 FLASH = $(FLASH_TARGET) -c $(FLASH_CMD)
 
 # Linker
-LD = $(COMMON_DIR)/stm32f407vg_linker.ld
+LD = $(HARDWARE_FILES_DIR)/stm32f407vg_linker.ld
 
 # Common source files
-SRC = $(COMMON_DIR)/stm32f407vg_startup.c
+SRC = $(HARDWARE_FILES_DIR)/stm32f407vg_startup.c
 
 # Project source files
 SRC += main.c

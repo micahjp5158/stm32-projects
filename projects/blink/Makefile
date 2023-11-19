@@ -6,7 +6,9 @@ OBJCOPY = arm-none-eabi-objcopy
 SIZE    = arm-none-eabi-size
 
 # Directories
-HARDWARE_FILES_DIR= ../../hardware-files
+REPO_ROOT_DIR = ../..
+HARDWARE_FILES_DIR = $(REPO_ROOT_DIR)/stm32f407vg
+REGISTER_HEADERS_DIR = $(HARDWARE_FILES_DIR)/registers
 
 # Project information
 PROJECT = blink
@@ -23,10 +25,13 @@ FLASH_TARGET = $(DEBUGGER) -f $(BOARD)
 FLASH_CMD = "program $(ELF) verify reset exit"
 FLASH = $(FLASH_TARGET) -c $(FLASH_CMD)
 
+# Include directory
+INC	= $(REPO_ROOT_DIR)/include
+
 # Linker
 LD = $(HARDWARE_FILES_DIR)/stm32f407vg_linker.ld
 
-# Common source files
+# Startup files
 SRC = $(HARDWARE_FILES_DIR)/stm32f407vg_startup.c
 
 # Project source files
@@ -35,6 +40,8 @@ SRC += main.c
 # Compilation flags
 CFLAGS  = -Wall -O0 -g
 CFLAGS += -mcpu=$(CPU) -mthumb -mfloat-abi=soft --specs=nano.specs -nostdlib
+CFLAGS += -I $(INC)
+CFLAGS += -I $(REGISTER_HEADERS_DIR)
 CFLAGS += -T $(LD)
 
 ## Rules

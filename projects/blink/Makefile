@@ -40,7 +40,8 @@ SRC += main.c
 
 # Compilation flags
 CFLAGS  = -Wall -O0 -g
-CFLAGS += -mcpu=$(CPU) -mthumb -mfloat-abi=soft --specs=nano.specs -nostdlib
+CFLAGS += -mcpu=$(CPU) -mthumb -mfloat-abi=soft
+CFLAGS +=  --specs=nano.specs -nostdlib
 
 # Include general header files
 CFLAGS += -I $(INC)

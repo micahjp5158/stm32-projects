@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // General
+            "name": "button-blink Debug",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "executable": "./button-blink.elf",
+            "runToEntryPoint": "main",
+
+            // Software configs
+            "servertype": "openocd",
+            "type": "cortex-debug",
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 4
+            },
+
+            // Hardware configs
+            "svdFile": "../stm32f407vg.svd",
+            "configFiles": [
+                "board/stm32f4discovery.cfg"
+            ],
+
+            // Executable paths - Update these paths to your own install locations!
+            "armToolchainPath": "/usr/local/gcc-arm-none-eabi/bin",
+            "gdbPath": "/usr/local/gcc-arm-none-eabi/bin/arm-none-eabi-gdb"
+        }
+    ]
+}

@@ -6,7 +6,7 @@ OBJCOPY = arm-none-eabi-objcopy
 SIZE    = arm-none-eabi-size
 
 # Project information
-PROJECT = blink
+PROJECT = button-blink
 ELF = $(PROJECT).elf
 BIN = $(PROJECT).bin
 

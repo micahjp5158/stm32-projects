@@ -5,19 +5,20 @@ AS      = arm-none-eabi-as
 OBJCOPY = arm-none-eabi-objcopy
 SIZE    = arm-none-eabi-size
 
-# Directories
-REPO_ROOT_DIR = ../..
-HARDWARE_FILES_DIR = $(REPO_ROOT_DIR)/stm32f407vg
-REGISTER_HEADERS_DIR = $(HARDWARE_FILES_DIR)/registers
-
 # Project information
 PROJECT = blink
 ELF = $(PROJECT).elf
 BIN = $(PROJECT).bin
 
 # Target information
+MCU = stm32f407vg
 CPU = cortex-m4
 BOARD = board/stm32f4discovery.cfg
+
+# Directories
+REPO_ROOT_DIR = ../..
+MCU_FILES_DIR = $(REPO_ROOT_DIR)/$(MCU)
+MCU_REG_DIR = $(MCU_FILES_DIR)/registers
 
 # Debugger information
 DEBUGGER = openocd
@@ -29,10 +30,10 @@ FLASH = $(FLASH_TARGET) -c $(FLASH_CMD)
 INC	= $(REPO_ROOT_DIR)/include
 
 # Linker
-LD = $(HARDWARE_FILES_DIR)/stm32f407vg_linker.ld
+LD = $(MCU_FILES_DIR)/linker.ld
 
 # Startup files
-SRC = $(HARDWARE_FILES_DIR)/stm32f407vg_startup.c
+SRC = $(MCU_FILES_DIR)/startup.c
 
 # Project source files
 SRC += main.c
@@ -40,8 +41,13 @@ SRC += main.c
 # Compilation flags
 CFLAGS  = -Wall -O0 -g
 CFLAGS += -mcpu=$(CPU) -mthumb -mfloat-abi=soft --specs=nano.specs -nostdlib
+
+# Include general header files
 CFLAGS += -I $(INC)
-CFLAGS += -I $(REGISTER_HEADERS_DIR)
+
+# Include hardware-specific header files
+CFLAGS += -I $(MCU_FILES_DIR)
+CFLAGS += -I $(MCU_REG_DIR)
 CFLAGS += -T $(LD)
 
 ## Rules

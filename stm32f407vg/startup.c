@@ -1,5 +1,5 @@
 /*
- * stm32f407vg_startup.c
+ * stm32f407vg/startup.c
  *
  * Startup file for the STM32F407VG MCU. Initializes the vector table,
  * implements the reset vector, and calls the main user program.

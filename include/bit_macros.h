@@ -13,6 +13,9 @@
 // Clear all bits in a register
 #define CLEAR_REG(reg)          (ACCESS(reg) = 0)
 
+// Set a register's value
+#define SET_REG(reg, val)       (ACCESS(reg) = (val))
+
 // Modify a specific bit in a register
 #define SET_BIT(reg, bit)       (ACCESS(reg) |= (1 << (bit)))
 #define CEAR_BIT(reg, bit)      (ACCESS(reg) &= (1 << (bit)))

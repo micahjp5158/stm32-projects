@@ -1,5 +1,5 @@
 /*
- * stm32f407vg_rcc_registers.h
+ * rcc_registers.h
  *
  * Defines macros for STM32F407VG RCC peripheral registers.
  */

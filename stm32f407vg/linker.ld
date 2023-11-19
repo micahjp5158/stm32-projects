@@ -1,5 +1,5 @@
 /*
- * stm32f407vg_linker.c
+ * stm32f407vg/linker.c
  *
  * Linker file for the STM32F407VG MCU. Defines the memory sections and
  * maps the memory sections.

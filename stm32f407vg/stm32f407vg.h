@@ -10,3 +10,4 @@
 #include "gpiod_registers.h"
 #include "gpiox_registers.h"
 #include "rcc_registers.h"
+#include "syscfg_registers.h"

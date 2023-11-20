@@ -14,24 +14,20 @@
 int main(void)
 {
     // Enable GPIOA and GPIOD clocks
-    SET_BIT(RCC_AHB1ENR, 0);
-    SET_BIT(RCC_AHB1ENR, 3);
+    SET_BITS(RCC_AHB1ENR, 0);
+    SET_BITS(RCC_AHB1ENR, (BIT0 | BIT3));
 
     // Set user push button to input direction
-    CLEAR_BIT(GPIOA_MODER, 0);
-    CLEAR_BIT(GPIOA_MODER, 1);
+    CLEAR_BITS(GPIOA_MODER, (BIT0 | BIT1));
 
     // Set LED GPIOs to output direction
-    SET_BIT(GPIOD_MODER, 24);
-    SET_BIT(GPIOD_MODER, 26);
-    SET_BIT(GPIOD_MODER, 28);
-    SET_BIT(GPIOD_MODER, 30);
+    SET_BITS(GPIOD_MODER, (BIT24 | BIT26 | BIT28 | BIT30));
 
     while(1) {
         for (int i = 0; i < 4; i++) {
             // Toggle LED
             CLEAR_REG(GPIOD_ODR);
-            SET_BIT(GPIOD_ODR, (12 + i));
+            SET_BITS(GPIOD_ODR, (BIT12 << i));
 
             // Delay
             for (volatile unsigned int i = 0; i < DELAY; i++);

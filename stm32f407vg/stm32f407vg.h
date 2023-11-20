@@ -5,6 +5,7 @@
  * other files for register definitions.
  */
 
+#include "exti_registers.h"
 #include "gpioa_registers.h"
 #include "gpiod_registers.h"
 #include "gpiox_registers.h"

@@ -52,7 +52,7 @@
 
 // Modify specific bits in a register
 #define SET_BITS(reg, bits)       (ACCESS(reg) |= (bits))
-#define CLEAR_BITS(reg, bits)     (ACCESS(reg) &= !(bits))
+#define CLEAR_BITS(reg, bits)     (ACCESS(reg) &= ~(bits))
 #define TOGGLE_BITS(reg, bits)    (ACCESS(reg) ^= (bits))
 
 #endif // BIT_MACROS_H

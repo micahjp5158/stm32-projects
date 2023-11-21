@@ -5,11 +5,14 @@
  * illuminating the next LED each time the user button is pressed.
  */
 
+#include "stdint.h"
+
 #include "bit_macros.h"
 #include "stm32f407vg.h"
 
-// Arbitrary delay
-#define DELAY   800000
+#define NUM_LEDS    (4)
+
+volatile uint8_t led;
 
 int main(void)
 {
@@ -35,8 +38,13 @@ int main(void)
     // Trigger EXTI0 on rising edge
     SET_BITS(EXTI_RTSR, BIT0);
 
-    // NVIC IRQ enable
-    SET_BITS(0xE000E100, BIT6);
+    // Enable EXTI0 interrupt
+    SET_BITS(NVIC_ISER0, BIT6);
+
+    // Default to green LED on
+    led = 0;
+    CLEAR_BITS(GPIOD_ODR, (BIT12 | BIT13 | BIT14 | BIT15));
+    SET_BITS(GPIOD_ODR, (BIT12 << led));
 
     // Wait for interrupts
     while(1);
@@ -44,8 +52,12 @@ int main(void)
 }
 
 void EXTI0_IRQHandler(void) {
-    // Toggle LED
-    TOGGLE_BITS(GPIOD_ODR, BIT12);
+    // Turn off current LED
+    CLEAR_BITS(GPIOD_ODR, (BIT12 << led));
+
+    // Turn on next LED
+    led = (led + 1) % NUM_LEDS;
+    SET_BITS(GPIOD_ODR, (BIT12 << led));
 
     // Clear pending interrupt
     SET_BITS(EXTI_PR, BIT0);

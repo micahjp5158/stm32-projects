@@ -11,7 +11,7 @@
 /* SYSCFG peripheral base address from STM32F407VG reference manual, Table 1 */
 #define SYSCFG_BASE_ADDR     0x40013C00
 
-/* SYSCFG register offsets from STM32F407VG reference manual Table 63 */
+/* SYSCFG register offsets from STM32F407VG reference manual Table 40 */
 #define SYSCFG_MEMRMP_OFFEST    0x00
 #define SYSCFG_PMC_OFFSET       0x04
 #define SYSCFG_EXTICR1_OFFSET   0x08

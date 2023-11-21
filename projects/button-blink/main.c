@@ -45,7 +45,6 @@ int main(void)
 
 void EXTI0_IRQHandler(void) {
     // Toggle LED
-    //TOGGLE_BITS(GPIOD_ODR, BIT12);
     TOGGLE_BITS(GPIOD_ODR, BIT12);
 
     // Clear pending interrupt

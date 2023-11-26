@@ -28,7 +28,7 @@ Each project will contain its own makefile to build and run the code. In general
 
 ### Debugging
 Each project will also contain a debug configuration file for use in Visual Studio Code using the Cortex-Debug extension. To use these debug configurations:
-1. Install [Visual Studio Code]((https://code.visualstudio.com/).
+1. Install [Visual Studio Code](https://code.visualstudio.com/).
 2. Install the  [Cortex-Debug](https://marketplace.visualstudio.com/items?itemName=marus25.cortex-debug) extension.
 3. Install `arm-none-eabi-gdb` dependencies:
 	```

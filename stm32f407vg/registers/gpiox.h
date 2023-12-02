@@ -1,12 +1,14 @@
 
 /*
- * gpiox_registers.h
+ * gpiox.h
  *
  * Defines the GPIO register offsets, which are shared for all GPIO channels
  */
 
-#ifndef GPIOx_REGISTERS_H
-#define GPIOx_REGISTERS_H
+#ifndef GPIOx_H
+#define GPIOx_H
+
+#include "stm32f407vg.h"
 
 /* GPIOx register offsets from STM32F407VG reference manual Table 39 */
 #define GPIOx_MODER_OFFSET		0x00U
@@ -226,4 +228,4 @@
 #define ARFH15_2    BIT30
 #define ARFH15_3    BIT31
 
-#endif // GPIOx_REGISTERS_H
+#endif // GPIOx_H

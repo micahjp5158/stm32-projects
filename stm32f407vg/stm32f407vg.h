@@ -57,12 +57,31 @@
 #define TOGGLE_BITS(reg, bits)    (ACCESS(reg) ^= (bits))
 
 /* Include peripheral registers */
-#include "exti_registers.h"
-#include "gpioa_registers.h"
-#include "gpiod_registers.h"
-#include "gpiox_registers.h"
-#include "nvic_registers.h"
-#include "rcc_registers.h"
-#include "syscfg_registers.h"
+
+/* NVIC */
+#include "nvic.h"
+
+/* RCC */
+#include "rcc.h"
+
+/* GPIO */
+#include "gpiox.h"
+#include "gpioa.h"
+#include "gpiob.h"
+#include "gpioc.h"
+#include "gpiod.h"
+#include "gpioe.h"
+#include "gpiof.h"
+#include "gpiog.h"
+#include "gpioh.h"
+#include "gpioi.h"
+#include "gpioj.h"
+#include "gpiok.h"
+
+/* EXTI */
+#include "exti.h"
+
+/* SYSCFG */
+#include "syscfg.h"
 
 #endif // STM32F407VG_H

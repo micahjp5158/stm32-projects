@@ -1,14 +1,14 @@
 
 /*
- * gpioe_registers.h
+ * gpioe.h
  *
  * Defines the GPIOE register addresses
  */
 
-#ifndef GPIOE_REGISTERS_H
-#define GPIOE_REGISTERS_H
+#ifndef GPIOE_H
+#define GPIOE_H
 
-#include "gpiox_registers.h"
+#include "gpiox.h"
 
 /* GPIOE peripheral base address from STM32F407VG reference manual, Table 1 */
 #define GPIOE_BASE_ADDR     0x40021000U
@@ -25,4 +25,4 @@
 #define GPIOE_AFRL      (GPIOE_BASE_ADDR + GPIOx_AFRL_OFFSET)
 #define GPIOE_AFRH      (GPIOE_BASE_ADDR + GPIOx_AFRH_OFFSET)
 
-#endif // GPIOE_REGISTERS_H
+#endif // GPIOE_H

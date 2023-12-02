@@ -1,12 +1,12 @@
 
 /*
- * syscfg_registers.h
+ * syscfg.h
  *
  * Defines the SYSCFG register addresses
  */
 
-#ifndef SYSCFG_REGISTERS_H
-#define SYSCFG_REGISTERS_H
+#ifndef SYSCFG_H
+#define SYSCFG_H
 
 /* SYSCFG peripheral base address from STM32F407VG reference manual, Table 1 */
 #define SYSCFG_BASE_ADDR     0x40013C00
@@ -29,4 +29,4 @@
 #define SYSCFG_EXTICR4  (SYSCFG_BASE_ADDR + SYSCFG_EXTICR4_OFFSET)
 #define SYSCFG_CMPCR    (SYSCFG_BASE_ADDR + SYSCFG_CMPCR_OFFSET)
 
-#endif // SYSCFG_REGISTERS_H
+#endif // SYSCFG_H

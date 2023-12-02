@@ -1,11 +1,11 @@
 /*
- * rtc_registers.h
+ * rtc.h
  *
  * Defines macros for STM32F407VG RTC peripheral registers.
  */
 
-#ifndef RTC_REGISTERS_H
-#define RTC_REGISTERS_H
+#ifndef RTC_H
+#define RTC_H
 
 /* RTC peripheral base address from STM32F407VG reference manual, Table 1 */
 #define RTC_BASE_ADDR   0x40002800
@@ -90,4 +90,4 @@
 #define RTC_BKP18R      (RTC_BASE_ADDR + RTC_BKP18R_OFFSET)
 #define RTC_BKP19R      (RTC_BASE_ADDR + RTC_BKP19R_OFFSET)
 
-#endif // RTC_REGISTERS_H
+#endif // RTC_H

@@ -1,12 +1,12 @@
 
 /*
- * nvic_registers.h
+ * nvic.h
  *
  * Defines the NVIC register addresses
  */
 
-#ifndef NVIC_REGISTERS_H
-#define NVIC_REGISTERS_H
+#ifndef NVIC_H
+#define NVIC_H
 
 /* NVIC register addresses from Arm Cortex-M4 technical manual, Table 6-1*/
 #define ICTR        0xE000E004
@@ -117,4 +117,4 @@
 #define NVIC_IPR58  0xE000E4E8
 #define NVIC_IPR59  0xE000E4EC
 
-#endif // NVIC_REGISTERS_H
+#endif // NVIC_H

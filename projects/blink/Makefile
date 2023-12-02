@@ -29,10 +29,10 @@ FLASH_CMD = "program $(ELF) verify reset exit"
 FLASH = $(FLASH_TARGET) -c $(FLASH_CMD)
 
 # Linker
-LD = $(MCU_FILES_DIR)/linker.ld
+LD = $(MCU_FILES_DIR)/$(MCU).ld
 
 # Startup files
-SRC = $(MCU_FILES_DIR)/startup.c
+SRC = $(MCU_FILES_DIR)/$(MCU).c
 
 # Project source files
 SRC += $(SRC_DIR)/main.c

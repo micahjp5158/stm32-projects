@@ -1,14 +1,14 @@
 
 /*
- * gpioi_registers.h
+ * gpioi.h
  *
  * Defines the GPIOI register addresses
  */
 
-#ifndef GPIOI_REGISTERS_H
-#define GPIOI_REGISTERS_H
+#ifndef GPIOI_H
+#define GPIOI_H
 
-#include "gpiox_registers.h"
+#include "gpiox.h"
 
 /* GPIOI peripheral base address from STM32F407VG reference manual, Table 1 */
 #define GPIOI_BASE_ADDR     0x40022000U
@@ -25,4 +25,4 @@
 #define GPIOI_AFRL      (GPIOI_BASE_ADDR + GPIOx_AFRL_OFFSET)
 #define GPIOI_AFRH      (GPIOI_BASE_ADDR + GPIOx_AFRH_OFFSET)
 
-#endif // GPIOI_REGISTERS_H
+#endif // GPIOI_H

@@ -1,11 +1,11 @@
 /*
- * rcc_registers.h
+ * rcc.h
  *
  * Defines macros for STM32F407VG RCC peripheral registers.
  */
 
-#ifndef RCC_REGISTERS_H
-#define RCC_REGISTERS_H
+#ifndef RCC_H
+#define RCC_H
 
 /* RCC peripheral base address from STM32F407VG reference manual, Table 1 */
 #define RCC_BASE_ADDR   0x40023800
@@ -64,4 +64,4 @@
 #define RCC_PLLSAICFGR  (RCC_BASE_ADDR + RCC_PLLSAICFGR_OFFSET)
 #define RCC_DCKCFGR     (RCC_BASE_ADDR + RCC_DCKCFGR_OFFSET)
 
-#endif // RCC_REGISTERS_H
+#endif // RCC_H

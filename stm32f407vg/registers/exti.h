@@ -1,12 +1,14 @@
 
 /*
- * exti_registers.h
+ * exti.h
  *
  * Defines the EXTI register addresses
  */
 
-#ifndef EXTI_REGISTERS_H
-#define EXTI_REGISTERS_H
+#ifndef EXTI_H
+#define EXTI_H
+
+#include "stm32f407vg.h"
 
 /* EXTI peripheral base address from STM32F407VG reference manual, Table 1 */
 #define EXTI_BASE_ADDR     0x40013C00U
@@ -127,4 +129,4 @@
 #define PR21    BIT21
 #define PR22    BIT22
 
-#endif // EXTI_REGISTERS_H
+#endif // EXTI_H

@@ -11,7 +11,7 @@
 #include "gpiox_registers.h"
 
 /* GPIOA peripheral base address from STM32F407VG reference manual, Table 1 */
-#define GPIOA_BASE_ADDR     0x40020000
+#define GPIOA_BASE_ADDR     0x40020000U
 
 /* GPIOA register addresses */
 #define GPIOA_MODER     (GPIOA_BASE_ADDR + GPIOx_MODER_OFFSET)

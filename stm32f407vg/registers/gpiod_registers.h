@@ -11,7 +11,7 @@
 #include "gpiox_registers.h"
 
 /* GPIOD peripheral base address from STM32F407VG reference manual, Table 1 */
-#define GPIOD_BASE_ADDR     0x40020C00
+#define GPIOD_BASE_ADDR     0x40020C00U
 
 /* GPIOD register addresses */
 #define GPIOD_MODER     (GPIOD_BASE_ADDR + GPIOx_MODER_OFFSET)

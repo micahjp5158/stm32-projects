@@ -5,11 +5,6 @@ AS      = arm-none-eabi-as
 OBJCOPY = arm-none-eabi-objcopy
 SIZE    = arm-none-eabi-size
 
-# Project information
-PROJECT = button-blink
-ELF = $(PROJECT).elf
-BIN = $(PROJECT).bin
-
 # Target information
 MCU = stm32f407vg
 CPU = cortex-m4
@@ -19,6 +14,13 @@ BOARD = board/stm32f4discovery.cfg
 REPO_ROOT_DIR = ../..
 MCU_FILES_DIR = $(REPO_ROOT_DIR)/$(MCU)
 MCU_REG_DIR = $(MCU_FILES_DIR)/registers
+SRC_DIR = ./src
+BUILD_DIR = ./build
+
+# Project information
+PROJECT = button-blink
+ELF = $(BUILD_DIR)/$(PROJECT).elf
+BIN = $(BUILD_DIR)/$(PROJECT).bin
 
 # Debugger information
 DEBUGGER = openocd
@@ -33,7 +35,7 @@ LD = $(MCU_FILES_DIR)/linker.ld
 SRC = $(MCU_FILES_DIR)/startup.c
 
 # Project source files
-SRC += main.c
+SRC += $(SRC_DIR)/main.c
 
 # Compilation flags
 CFLAGS  = -Wall -O0 -g
@@ -48,14 +50,17 @@ CFLAGS += -T $(LD)
 ## Rules
 default: $(BIN)
 
-$(BIN) : $(ELF)
+$(BIN): $(ELF)
 	$(OBJCOPY) -O binary $^ $@
 
-$(ELF): $(SRC)
+$(ELF): $(SRC) | $(BUILD_DIR)
 	$(CC) $(CFLAGS) $^ -o $@
+
+$(BUILD_DIR):
+	mkdir $(BUILD_DIR)
 
 flash:
 	$(FLASH)
 
 clean:
-	rm -f *.o *.d *.elf *.bin *.map
+	rm -rf $(BUILD_DIR)

@@ -7,7 +7,6 @@
 
 #include "stdint.h"
 
-#include "bit_macros.h"
 #include "stm32f407vg.h"
 
 #define NUM_LEDS    (4)

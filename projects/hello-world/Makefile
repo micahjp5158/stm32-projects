@@ -26,9 +26,6 @@ FLASH_TARGET = $(DEBUGGER) -f $(BOARD)
 FLASH_CMD = "program $(ELF) verify reset exit"
 FLASH = $(FLASH_TARGET) -c $(FLASH_CMD)
 
-# Include directory
-INC	= $(REPO_ROOT_DIR)/include
-
 # Linker
 LD = $(MCU_FILES_DIR)/linker.ld
 
@@ -42,9 +39,6 @@ SRC += main.c
 CFLAGS  = -Wall -O0 -g
 CFLAGS += -mcpu=$(CPU) -mthumb -mfloat-abi=soft
 CFLAGS += --specs=rdimon.specs -lrdimon -lc
-
-# Include general header files
-CFLAGS += -I $(INC)
 
 # Include hardware-specific header files
 CFLAGS += -I $(MCU_FILES_DIR)

@@ -4,7 +4,6 @@
  * Blink the four user LEDs on the STM32F407G-DISC1 development board.
  */
 
-#include "bit_macros.h"
 #include "stm32f407vg.h"
 
 // Arbitrary delay

@@ -6,10 +6,10 @@
     "configurations": [
         {
             // General
-            "name": "Blink Debug",
+            "name": "blink Debug",
             "request": "launch",
             "cwd": "${workspaceRoot}",
-            "executable": "./blink.elf",
+            "executable": "./build/blink.elf",
             "runToEntryPoint": "main",
 
             // Software configs

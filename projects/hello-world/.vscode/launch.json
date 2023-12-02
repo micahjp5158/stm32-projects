@@ -9,7 +9,7 @@
             "name": "hello-world Debug",
             "request": "launch",
             "cwd": "${workspaceRoot}",
-            "executable": "./hello-world.elf",
+            "executable": "./build/hello-world.elf",
             "runToEntryPoint": "main",
 
             // Software configs

@@ -58,11 +58,8 @@
 
 /* Include peripheral registers */
 
-/* NVIC */
-#include "nvic.h"
-
-/* RCC */
-#include "rcc.h"
+/* EXTI */
+#include "exti.h"
 
 /* GPIO */
 #include "gpiox.h"
@@ -78,8 +75,14 @@
 #include "gpioj.h"
 #include "gpiok.h"
 
-/* EXTI */
-#include "exti.h"
+/* NVIC */
+#include "nvic.h"
+
+/* RCC */
+#include "rcc.h"
+
+/* RTC */
+#include "rtc.h"
 
 /* SYSCFG */
 #include "syscfg.h"

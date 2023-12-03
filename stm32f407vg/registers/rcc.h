@@ -42,25 +42,25 @@
 #define RCC_PLLCFGR     (RCC_BASE_ADDR + RCC_PLLCFGR_OFFEST)    // RCC PLL configuration register
 #define RCC_CFGR        (RCC_BASE_ADDR + RCC_CFGR_OFFSET)       // RCC clock configuration register
 #define RCC_CIR         (RCC_BASE_ADDR + RCC_CIR_OFFSET)        // RCC clock interrupt register
-#define RCC_AHB1RSTR    (RCC_BASE_ADDR + RCC_AHB1RSTR_OFFSET)   // RCC AHB1 peripheral reset register 
-#define RCC_AHB2RSTR    (RCC_BASE_ADDR + RCC_AHB2RSTR_OFFSET)   // RCC AHB2 peripheral reset register 
-#define RCC_AHB3RSTR    (RCC_BASE_ADDR + RCC_AHB3RSTR_OFFSET)   // RCC AHB3 peripheral reset register 
+#define RCC_AHB1RSTR    (RCC_BASE_ADDR + RCC_AHB1RSTR_OFFSET)   // RCC AHB1 peripheral reset register
+#define RCC_AHB2RSTR    (RCC_BASE_ADDR + RCC_AHB2RSTR_OFFSET)   // RCC AHB2 peripheral reset register
+#define RCC_AHB3RSTR    (RCC_BASE_ADDR + RCC_AHB3RSTR_OFFSET)   // RCC AHB3 peripheral reset register
 #define RCC_APB1RSTR    (RCC_BASE_ADDR + RCC_APB1RSTR_OFFSET)   // RCC APB1 peripheral reset register
 #define RCC_APB2RSTR    (RCC_BASE_ADDR + RCC_APB2RSTR_OFFSET)   // RCC APB2 peripheral reset register
-#define RCC_AHB1ENR     (RCC_BASE_ADDR + RCC_AHB1ENR_OFFSET)    // RCC AHB1 peripheral clock enable register 
-#define RCC_AHB2ENR     (RCC_BASE_ADDR + RCC_AHB2ENR_OFFSET)    // RCC AHB2 peripheral clock enable register 
-#define RCC_AHB3ENR     (RCC_BASE_ADDR + RCC_AHB3ENR_OFFSET)    // RCC AHB3 peripheral clock enable register 
-#define RCC_APB1ENR     (RCC_BASE_ADDR + RCC_APB1ENR_OFFSET)    // RCC APB1 peripheral clock enable register 
-#define RCC_APB2ENR     (RCC_BASE_ADDR + RCC_APB2ENR_OFFSET)    // RCC APB2 peripheral clock enable register 
+#define RCC_AHB1ENR     (RCC_BASE_ADDR + RCC_AHB1ENR_OFFSET)    // RCC AHB1 peripheral clock enable register
+#define RCC_AHB2ENR     (RCC_BASE_ADDR + RCC_AHB2ENR_OFFSET)    // RCC AHB2 peripheral clock enable register
+#define RCC_AHB3ENR     (RCC_BASE_ADDR + RCC_AHB3ENR_OFFSET)    // RCC AHB3 peripheral clock enable register
+#define RCC_APB1ENR     (RCC_BASE_ADDR + RCC_APB1ENR_OFFSET)    // RCC APB1 peripheral clock enable register
+#define RCC_APB2ENR     (RCC_BASE_ADDR + RCC_APB2ENR_OFFSET)    // RCC APB2 peripheral clock enable register
 #define RCC_AHB1LPENR   (RCC_BASE_ADDR + RCC_AHB1LPENR_OFFSET)  // RCC AHB1 peripheral clock enable in low power mode register
 #define RCC_AHB2LPENR   (RCC_BASE_ADDR + RCC_AHB2LPENR_OFFSET)  // RCC AHB2 peripheral clock enable in low power mode register
 #define RCC_AHB3LPENR   (RCC_BASE_ADDR + RCC_AHB3LPENR_OFFSET)  // RCC AHB3 peripheral clock enable in low power mode register
 #define RCC_APB1LPENR   (RCC_BASE_ADDR + RCC_APB1LPENR_OFFSET)  // RCC APB1 peripheral clock enable in low power mode register
 #define RCC_APB2LPENR   (RCC_BASE_ADDR + RCC_APB2LPENR_OFFSET)  // RCC APB2 peripheral clock enable in low power mode register
-#define RCC_BDCR        (RCC_BASE_ADDR + RCC_BDCR_OFFSET)       // RCC Backup domain control register 
-#define RCC_CSR         (RCC_BASE_ADDR + RCC_CSR_OFFSET)        // RCC clock control & status register 
-#define RCC_SSCGR       (RCC_BASE_ADDR + RCC_SSCGR_OFFSET)      // RCC spread spectrum clock generation register 
-#define RCC_PLLI2SCFGR  (RCC_BASE_ADDR + RCC_PLLI2SCFGR_OFFSET) // RCC PLLI2S configuration register 
+#define RCC_BDCR        (RCC_BASE_ADDR + RCC_BDCR_OFFSET)       // RCC Backup domain control register
+#define RCC_CSR         (RCC_BASE_ADDR + RCC_CSR_OFFSET)        // RCC clock control & status register
+#define RCC_SSCGR       (RCC_BASE_ADDR + RCC_SSCGR_OFFSET)      // RCC spread spectrum clock generation register
+#define RCC_PLLI2SCFGR  (RCC_BASE_ADDR + RCC_PLLI2SCFGR_OFFSET) // RCC PLLI2S configuration register
 
 /* RCC_CR bit definitions */
 #define HSION   BIT0        // Internal high-speed clock enable

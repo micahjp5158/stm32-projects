@@ -215,7 +215,7 @@
 /* GPIOx_LCKR bit definitions */
 #define GPIOx_LCK0  BIT0    // Port 0 lock bit
 #define GPIOx_LCK1  BIT1    // Port 1 lock bit
-#define GPIOx_LCK1  BIT2    // Port 2 lock bit
+#define GPIOx_LCK2  BIT2    // Port 2 lock bit
 #define GPIOx_LCK3  BIT3    // Port 3 lock bit
 #define GPIOx_LCK4  BIT4    // Port 4 lock bit
 #define GPIOx_LCK5  BIT5    // Port 5 lock bit

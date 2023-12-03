@@ -72,8 +72,6 @@
 #include "gpiog.h"
 #include "gpioh.h"
 #include "gpioi.h"
-#include "gpioj.h"
-#include "gpiok.h"
 
 /* NVIC */
 #include "nvic.h"

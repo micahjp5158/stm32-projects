@@ -82,6 +82,15 @@
 /* RTC */
 #include "rtc.h"
 
+/* SPI / I2S */
+#include "spix_i2sx.h"
+#include "spi1.h"
+#include "spi2_i2s2.h"
+#include "spi3_i2s3.h"
+#include "spi4.h"
+#include "spi5.h"
+#include "spi6.h"
+
 /* SYSCFG */
 #include "syscfg.h"
 

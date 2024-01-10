@@ -79,6 +79,9 @@
 /* RCC */
 #include "rcc.h"
 
+/* RNG */
+#include "rng.h"
+
 /* RTC */
 #include "rtc.h"
 

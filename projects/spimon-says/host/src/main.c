@@ -8,6 +8,7 @@
  * instructing the client to illuminate the same LED.
  */
 
+#include "stdbool.h"
 #include "stdint.h"
 
 #include "stm32f407vg.h"
@@ -30,14 +31,21 @@ int main(void)
     // Set LED GPIOs to output direction
     ACCESS(GPIOD_MODER) |= BIT24 | BIT26 | BIT28 | BIT30;
 
-    // TODO: Configure RNG
+    // Enable RNG clock
+    ACCESS(RCC_AHB2ENR) |= RCC_AHB2ENR_RNGEN;
+
+    // Enable PLL, source of RNG clock
+    ACCESS(RCC_CR) |= RCC_CR_PLLON;
+
+    // Enable RNG generation
+    ACCESS(RNG_CR) |= RNG_CR_RNGEN;
 
     // TODO: Configure SPI
 
     while(1) {
-        // Get a new random number 0-3
-        // TODO: Use RNG peripheral to generate a random value
-        uint8_t led_idx = 0;
+        // Wait for new random number, take two LSBs for values 0-3
+        while (!(ACCESS(RNG_SR) & (RNG_SR_DRDY)));
+        uint8_t led_idx = ACCESS(RNG_DR) & 0x03;
 
         // Blink selected LED three times (6 toggles)
         for (uint8_t i = 0; i < 6; i++) {

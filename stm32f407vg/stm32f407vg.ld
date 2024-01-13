@@ -33,7 +33,7 @@ SECTIONS
         *(.rodata.*)
         . = ALIGN(4);
         _etext = .;     /* End of text section symbol */
-    } > FLASH        
+    } > FLASH
 
     _la_data = LOADADDR(.data);
 
@@ -45,7 +45,7 @@ SECTIONS
         *(.data.*)
         . = ALIGN(4);
         _edata = .;     /* End of data section symbol */
-    } > SRAM AT > FLASH    
+    } > SRAM AT > FLASH
 
     /* BSS section */
     .bss :
@@ -58,7 +58,7 @@ SECTIONS
         . = ALIGN(4);
         _ebss = .;              /* End of BSS section symbol */
         __bss_end__ = _ebss;
-        . = ALIGN(4); 
+        . = ALIGN(4);
         end = .;
         __end__ = .;
     } > SRAM

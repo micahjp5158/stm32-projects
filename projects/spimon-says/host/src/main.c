@@ -40,7 +40,26 @@ int main(void)
     // Enable RNG generation
     ACCESS(RNG_CR) |= RNG_CR_RNGEN;
 
-    // TODO: Configure SPI
+    // Enable GPIOB clock
+    ACCESS(RCC_AHB1ENR) |= RCC_AHB1ENR_GPIOBEN;
+
+    // Configure SPI2 pins
+    ACCESS(GPIOB_AFRH) |= GPIOx_AFRH13_0 | GPIOx_AFRH13_2;  // PB13 = AF5 (SPI2_SCK)
+    ACCESS(GPIOB_AFRH) |= GPIOx_AFRH15_0 | GPIOx_AFRH15_2;  // PB15 = AF5 (SPI2_MOSI)
+    ACCESS(GPIOB_MODER) |= GPIOx_MODER13_1;                 // PB13 to alternate function mode
+    ACCESS(GPIOB_MODER) |= GPIOx_MODER15_1;                 // PB15 to alternate funciton mode
+
+    // Enable SPI2 clock
+    ACCESS(RCC_APB1ENR) |= RCC_APB1ENR_SPI2EN;
+
+    // SPI2 Configuration
+    uint32_t spi2_cfg = 0;
+    spi2_cfg |= SPIx_CR1_MSTR;                  // Master mode
+    spi2_cfg |= SPIx_CR1_SSM | SPIx_CR1_SSI;    // Use software slave management
+    ACCESS(SPI2_CR1) = spi2_cfg;
+
+    // Enable SPI2
+    ACCESS(SPI2_CR1) |= SPIx_CR1_SPE;
 
     while(1) {
         // Wait for new random number, take two LSBs for values 0-3
@@ -59,8 +78,14 @@ int main(void)
         ACCESS(GPIOD_ODR) |= led_lookup[led_idx];
         for (volatile unsigned int j = 0; j < (3 * DELAY); j++);
 
-        // Send the selected LED value to the client STM32 via SPI
-        // TODO: Send data over SPI
+        // Wait for SPI TX buffer to empty
+        while(!(ACCESS(SPI2_SR) & SPIx_SR_TXE));
+
+        // Fill data register with LED index
+        ACCESS(SPI2_DR) = led_idx;
+
+        // Wait for busy flag to clear
+        while(ACCESS(SPI2_SR) & SPIx_SR_BSY);
 
         // Hold LEDs off for a few cycles
         ACCESS(GPIOD_ODR) &= ~(led_lookup[led_idx]);

@@ -8,7 +8,7 @@
 #ifndef SPI1_H
 #define SPI1_H
 
-#include "spix_i2sx.h"
+#include "spix.h"
 
 /* SPI1 peripheral base address from STM32F407VG reference manual, Table 1 */
 #define SPI1_BASE_ADDR     0x40013000U

@@ -8,7 +8,6 @@
  * instructing the client to illuminate the same LED.
  */
 
-#include "stdbool.h"
 #include "stdint.h"
 
 #include "stm32f407vg.h"
@@ -74,9 +73,8 @@ int main(void)
             for (volatile unsigned int j = 0; j < DELAY; j++);
         }
 
-        // Hold the LED on for a few cycles
+        // Turn on the selected LED
         ACCESS(GPIOD_ODR) |= led_lookup[led_idx];
-        for (volatile unsigned int j = 0; j < (3 * DELAY); j++);
 
         // Wait for SPI TX buffer to empty
         while(!(ACCESS(SPI2_SR) & SPIx_SR_TXE));
@@ -87,7 +85,10 @@ int main(void)
         // Wait for busy flag to clear
         while(ACCESS(SPI2_SR) & SPIx_SR_BSY);
 
-        // Hold LEDs off for a few cycles
+        // Hold the LED on for a few cycles
+        for (volatile unsigned int j = 0; j < (3 * DELAY); j++);
+
+        // Turn of LEDs and hold for a few cycles
         ACCESS(GPIOD_ODR) &= ~(led_lookup[led_idx]);
         for (volatile unsigned int j = 0; j < (3 * DELAY); j++);
     }

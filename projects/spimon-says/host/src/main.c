@@ -60,6 +60,9 @@ int main(void)
     // Enable SPI2
     ACCESS(SPI2_CR1) |= SPIx_CR1_SPE;
 
+    // Configure SPI slave ready (PB11)
+    ACCESS(GPIOB_PUPDR) |= GPIOx_PUPDR11_1;   // Enable internal pull-down resistor
+
     while(1) {
         // Wait for new random number, take two LSBs for values 0-3
         while (!(ACCESS(RNG_SR) & (RNG_SR_DRDY)));
@@ -76,14 +79,17 @@ int main(void)
         // Turn on the selected LED
         ACCESS(GPIOD_ODR) |= led_lookup[led_idx];
 
-        // Wait for SPI TX buffer to empty
-        while(!(ACCESS(SPI2_SR) & SPIx_SR_TXE));
+        // If SPI slave is ready:
+        if (ACCESS(GPIOB_IDR) & GPIOx_IDR11) {
+            // Wait for SPI TX buffer to empty
+            while(!(ACCESS(SPI2_SR) & SPIx_SR_TXE));
 
-        // Fill data register with LED index
-        ACCESS(SPI2_DR) = led_idx;
+            // Fill data register with LED index
+            ACCESS(SPI2_DR) = led_idx;
 
-        // Wait for busy flag to clear
-        while(ACCESS(SPI2_SR) & SPIx_SR_BSY);
+            // Wait for busy flag to clear
+            while(ACCESS(SPI2_SR) & SPIx_SR_BSY);
+        }
 
         // Hold the LED on for a few cycles
         for (volatile unsigned int j = 0; j < (3 * DELAY); j++);

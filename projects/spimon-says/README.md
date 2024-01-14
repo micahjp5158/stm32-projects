@@ -13,8 +13,9 @@ The host subproject uses the STM32's RNG peripheral to randomly select one of th
 The client subproject receives the data from the host over SPI and illuminates the same LED based on the received data.
 The following pins on the two STM32F407VGs must be connected for the two STM32s to communicate as expected:
 1. Host GND <-> Client GND
-2. Host PB13 <-> Client PB13 (SPI2 SCLK)
-3. Host PB15 <-> Client PB15 (SPI2 MOSI)
+2. Host PB11 <-> Client PB11 (Slave SPI ready pin)
+3. Host PB13 <-> Client PB13 (SPI2 SCLK)
+4. Host PB15 <-> Client PB15 (SPI2 MOSI)
 
 Since OpenOCD cannot easily distinguish between two STLink debuggers, these projects must be flashed one at a time with only one Discovery board connected to the build environment PC at a time. To flash, navigate to the desired subproject's subfolder and use `make flash`. As a future improvement to this, one of the following methods may work:
 1. Create a Makefile that can build and flash both targets at the same time by reading the STLink serial numbers

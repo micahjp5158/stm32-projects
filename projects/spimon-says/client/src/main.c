@@ -43,6 +43,10 @@ int main(void)
     // Enable SPI2
     ACCESS(SPI2_CR1) |= SPIx_CR1_SPE;
 
+    // Configure SPI Ready pin on PB11
+    ACCESS(GPIOB_MODER) |= GPIOx_MODER11_0; // Set as output
+    ACCESS(GPIOB_ODR) |= GPIOx_ODR11;       // Set pin high to indicate SPI is ready
+
     while(1) {
         // Wait for SPI RX buffer to have data
         while(!(ACCESS(SPI2_SR) & SPIx_SR_RXNE));

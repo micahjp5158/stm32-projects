@@ -94,4 +94,12 @@
 /* SYSCFG */
 #include "syscfg.h"
 
+/* USART */
+#include "usart1.h"
+#include "usart2.h"
+#include "usart3.h"
+#include "uart4.h"
+#include "uart5.h"
+#include "usart6.h"
+
 #endif // STM32F407VG_H
